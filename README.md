@@ -1,6 +1,6 @@
 METODOS PARA OBTENER LOS DATOS DE LA API O CREAR UNA NUEVA LISTA DE TAREAS
 
-PROBADOS CON POSTMAN:
+
 
 GET   http://{$PATH}/api/lista-tarea (esta ruta permite listar todas las tareas)
 
