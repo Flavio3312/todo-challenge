@@ -1,35 +1,88 @@
-# Invera ToDo-List Challenge (Python/Django Jr-SSr)
+METODOS PARA OBTENER LOS DATOS DE LA API O CREAR UNA NUEVA LISTA DE TAREAS
 
-El propósito de esta prueba es conocer tu capacidad para crear una pequeña aplicación funcional en un límite de tiempo. A continuación, encontrarás las funciones, los requisitos y los puntos clave que debés tener en cuenta durante el desarrollo.
+PROBADOS CON POSTMAN:
 
-## Qué queremos que hagas:
+GET   http://{$PATH}/api/lista-tarea (esta ruta permite listar todas las tareas)
 
-- El Challenge consiste en crear una aplicación web sencilla que permita a los usuarios crear y mantener una lista de tareas.
-- La entrega del resultado será en un nuevo fork de este repo y deberás hacer una pequeña demo del funcionamiento y desarrollo del proyecto ante un super comité de las más grandes mentes maestras de Invera, o a un par de devs, lo que sea más fácil de conseguir.
-- Podes contactarnos en caso que tengas alguna consulta.
+GET   http://{$PATH}/api/detalle-tarea/{nombre} (esta ruta permite listar la tarea con el nombre)-cualquier string en mayusculas o minusculas
 
-## Objetivos:
+POST  http://{$PATH}/api/crear-tarea/ (esta ruta permite crear una tarea) - enviar un json con el nombre de la tarea y el titulo de la tarea por body en Postman ejemplo: ({
 
-El usuario de la aplicación tiene que ser capaz de:
+      "nombre": "nombre de la tarea",
+      "titulo": "titulo de la tarea"
 
-- Crear una tarea
-- Eliminar una tarea
-- Marcar tareas como completadas
-- Poder ver una lista de todas las tareas existentes
-- Filtrar/buscar tareas por fecha de creación y/o por el contenido de la misma
+})
 
-## Qué evaluamos:
 
-- Desarrollo utilizando Python, Django. No es necesario crear un Front-End, pero sí es necesario tener una API que permita cumplir con los objetivos de arriba.
-- Calidad y arquitectura de código. Facilidad de lectura y mantenimiento del código. Estándares seguidos.
-- [Bonus] Manejo de logs.
-- [Bonus] Creación de tests (unitarias y de integración)
-- [Bonus] Unificar la solución propuesta en una imagen de Docker por repositorio para poder ser ejecutada en cualquier ambiente (si aplica para full stack).
 
-## Requerimientos de entrega:
+GET http://{$PATH}/api/actualizar-tarea/<str:pk>/ (esta ruta permite actualizar una tarea) - enviar un id de la tarea y pasa el estado de completada a True o Flase
 
-- Hacer un fork del proyecto y pushearlo en github. Puede ser privado.
-- La solución debe correr correctamente.
-- El Readme debe contener todas las instrucciones para poder levantar la aplicación, en caso de ser necesario, y explicar cómo se usa.
-- Disponibilidad para realizar una pequeña demo del proyecto al finalizar el challenge.
-- Tiempo para la entrega: Aproximadamente 7 días.
+
+DELETE http://{$PATH}/api/eliminar-tarea/<str:pk>/(esta ruta permite eliminar una tarea) - enviar un id de la tarea
+
+#############################################################################################################################################################
+
+Pasos 
+
+1)Bajar el Repositorio de la API
+
+2)Modificar constantes del .env de acuerdo a las configuracion de tu base de datos 
+
+
+2)CREAR UN ENTORNO VIRTUAL E INSTALAR LOS PAQUETES DEL FICHERO requirements.txt
+
+2.a)pip install virtualenv
+
+2.b)venv\Scripts\activate.bat
+
+2.c)pip install -r requirements.txt
+
+3)CREAR TABLA Y COLUMNAS EN LA BASE DE DATOS
+
+python manage.py makemigrations
+
+python manage.py migrate
+
+4)CREAR EL USUARIO ADMINISTRADOR
+
+python manage.py createsuperuser
+username : flavio
+password : admin1234
+
+5)CORRER TEST
+
+python manage.py test
+
+6)RUN SERVER
+python manage.py runserver
+
+revisar los endpoints de la api en el navegador para consumir con Django Rest Framework 
+
+
+http://127.0.0.1:8000/api/
+
+Api Overview 
+
+GET /api/
+HTTP 200 OK
+Allow: GET, OPTIONS
+Content-Type: application/json
+Vary: Accept
+
+{
+    "List": "/lista-tarea/",
+    "Detail View": "/detalle-tarea/<str:nombre>/",
+    "Create": "/crear-tarea/",
+    "Update": "/actualizar-tarea/<str:pk>/",
+    "Delete": "/eliminar-tarea/<str:pk>/"
+}
+
+
+
+
+
+
+
+
+
+
