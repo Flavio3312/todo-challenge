@@ -2,17 +2,20 @@ METODOS PARA OBTENER LOS DATOS DE LA API O CREAR UNA NUEVA LISTA DE TAREAS
 
 
 
-GET   http://{$PATH}/api/lista-tarea (esta ruta permite listar todas las tareas)
+- > GET   http://{$PATH}/api/lista-tarea (esta ruta permite listar todas las tareas)
 
-GET   http://{$PATH}/api/detalle-tarea/{nombre} (esta ruta permite listar la tarea con el nombre)-cualquier string en mayusculas o minusculas
+- > GET   http://{$PATH}/api/detalle-tarea/{nombre} (esta ruta permite listar la tarea con el nombre)-cualquier string en mayusculas o minusculas
 
-POST  http://{$PATH}/api/crear-tarea/ (esta ruta permite crear una tarea) - enviar un json con el nombre de la tarea y el titulo de la tarea por body en Postman ejemplo: ({
+- > POST  http://{$PATH}/api/crear-tarea/ (esta ruta permite crear una tarea) - enviar un json con el nombre de la tarea y el titulo de la tarea por body en Postman ejemplo: 
+
+```JSON
+({
 
       "nombre": "nombre de la tarea",
       "titulo": "titulo de la tarea"
 
 })
-
+```
 
 
 GET http://{$PATH}/api/actualizar-tarea/<str:pk>/ (esta ruta permite actualizar una tarea) - enviar un id de la tarea y pasa el estado de completada a True o Flase
